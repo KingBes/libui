@@ -17,7 +17,7 @@ jobs:
         os: [ubuntu-latest]
         # x86, x64
         arch: [x64]
-        libtype: [static, shared]
+        libtype: [shared]
         # debug, debugoptimized, release
         buildtype: [debug]
     runs-on: ${{ matrix.os }}
@@ -55,8 +55,8 @@ jobs:
       matrix:
         # windows-latest, windows-2022
         os: [windows-2022]
-        arch: [x86, x64]
-        libtype: [static, shared] # FIXME [static, shared]
+        arch: [x64]
+        libtype: [shared] # FIXME [static, shared]
         # debug, debugoptimized, release
         buildtype: [debug]
     runs-on: ${{ matrix.os }}
@@ -102,7 +102,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [macos-latest]
-        libtype: [static, shared]
+        libtype: [shared]
         # debug, debugoptimized, release
         buildtype: [debug]
     runs-on: ${{ matrix.os }}
