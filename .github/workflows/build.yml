@@ -117,6 +117,8 @@ jobs:
         run: |
           brew update
           brew install meson ninja
+          brew reinstall ninja
+          brew reinstall python@3.13
       - name: Checkout
         uses: actions/checkout@v4
       - name: Meson Setup Build
