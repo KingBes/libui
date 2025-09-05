@@ -115,6 +115,13 @@ _UI_EXTERN int uiControlEnabledToUser(uiControl *);
 
 _UI_EXTERN void uiUserBugCannotSetParentOnToplevel(const char *type);
 
+enum SetIconErrorCode {
+	OK = 0,
+	WINDOW_NOT_FOUND,
+	ICON_NOT_FOUND,
+	OS_UNSUPPORTED,
+};
+
 typedef struct uiWindow uiWindow;
 #define uiWindow(this) ((uiWindow *) (this))
 _UI_EXTERN char *uiWindowTitle(uiWindow *w);
@@ -130,6 +137,7 @@ _UI_EXTERN void uiWindowSetBorderless(uiWindow *w, int borderless);
 _UI_EXTERN void uiWindowSetChild(uiWindow *w, uiControl *child);
 _UI_EXTERN int uiWindowMargined(uiWindow *w);
 _UI_EXTERN void uiWindowSetMargined(uiWindow *w, int margined);
+_UI_EXTERN enum SetIconErrorCode uiWindowSetIcon(uiWindow *w, const char *iconPath);
 _UI_EXTERN uiWindow *uiNewWindow(const char *title, int width, int height, int hasMenubar);
 
 typedef struct uiButton uiButton;

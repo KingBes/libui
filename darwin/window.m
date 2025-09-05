@@ -367,6 +367,11 @@ static void defaultOnPositionContentSizeChanged(uiWindow *w, void *data)
 	// do nothing
 }
 
+enum SetIconErrorCode uiWindowSetIcon(uiWindow *w, const char *iconFilePath)
+{
+	return OS_UNSUPPORTED;
+}
+
 uiWindow *uiNewWindow(const char *title, int width, int height, int hasMenubar)
 {
 	uiWindow *w;

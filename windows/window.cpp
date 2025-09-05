@@ -452,6 +452,26 @@ static void setClientSize(uiWindow *w, int width, int height, BOOL hasMenubar, D
 		logLastError(L"error resizing window");
 }
 
+enum SetIconErrorCode uiWindowSetIcon(uiWindow *w, const char *iconFilePath){
+	if(w->hwnd == NULL){
+		return WINDOW_NOT_FOUND;
+	}
+	size_t size = strlen(iconFilePath) + 1;
+	wchar_t* iconPath = static_cast<wchar_t*>(malloc(size * sizeof(wchar_t)));
+	mbstowcs(iconPath, iconFilePath, size);
+	HICON hIcon = static_cast<HICON>(LoadImageW(NULL, iconPath, IMAGE_ICON, 0, 0, LR_LOADFROMFILE));
+	if (hIcon == NULL) {
+		free(iconPath);
+		return ICON_NOT_FOUND;
+	}
+	// Set the application icon
+	SendMessageW(w->hwnd, WM_SETICON, ICON_BIG, (LPARAM)hIcon);
+	// Cleanup
+	free(iconPath);
+	DestroyIcon(hIcon);
+	return OK;
+}
+
 uiWindow *uiNewWindow(const char *title, int width, int height, int hasMenubar)
 {
 	uiWindow *w;
