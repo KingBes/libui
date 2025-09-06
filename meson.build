@@ -67,7 +67,7 @@ libui_project_compile_args = []
 libui_project_link_args = []
 
 if libui_OS == 'darwin'
-	libui_macosx_version_min = '-mmacosx-version-min=10.8'
+	libui_macosx_version_min = '-mmacosx-version-min=10.13'
 	libui_project_compile_args += [libui_macosx_version_min]
 	libui_project_link_args += [libui_macosx_version_min]
 endif
